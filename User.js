@@ -59,3 +59,34 @@ percy.transferAmount(adder, 30);
 
 percy.displayBalance();
 adder.displayBalance();
+
+
+class BankAccount {
+    constructor(intRate = 0, balance = 0, accountName){
+        this.accountName = accountName;
+        this.intRate = intRate;
+        this.balance = balance;
+    }
+    deposit(amount) {
+        this.balance +=amount;
+        return this;
+        }
+    withdraw(amount) {
+        this.balance -=amount;
+        return this;
+        }
+    displayAccountInfo(accountName) {
+        console.log(`Account ${accountName} balance: $${this.balance}`);
+        }
+    yieldInterest(rate) {
+        this.balance += this.balance * rate;
+        return this;
+        }
+    }
+    
+
+const account1 = new BankAccount();
+const account2 = new BankAccount();
+
+account1.deposit(10).deposit(20).deposit(30).withdraw(10).yieldInterest(0.50).displayAccountInfo("Account 1");
+account2.deposit(30).deposit(40).withdraw(10).withdraw(3).withdraw(7).withdraw(6).withdraw(4).yieldInterest(0.50).displayAccountInfo("Account 2");
